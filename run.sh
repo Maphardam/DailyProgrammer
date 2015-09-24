@@ -1,8 +1,10 @@
 #!/bin/bash
-# author: Tim Sabsch <tim@sabsch.com>
+#author: Tim Sabsch <tim@sabsch.com>
 
-find $1 -type f -name "*.txt" | sort | while read txt; do
-    go run $1/solution.go $txt >> $1/output.out;
-    sed -i -e '$a\' $1/output.out
+> $1/output.out
+find $1 -type f -name "*.in" | sort | while read inp; do
+    printf "Output of $inp:\n" >> $1/output.out
+    go run $1/solution.go $inp >> $1/output.out
+    printf "\n\n" >> $1/output.out
 done
 
