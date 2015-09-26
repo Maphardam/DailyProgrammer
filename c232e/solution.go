@@ -27,16 +27,13 @@ func main() {
 	for i := 1; i <= ln; i++ {
 	    scanner.Scan()
 	    tmp := scanner.Text()
-	    tmp  = strings  .ToLower(tmp)
-	    tmp  = strings.Replace(tmp, " ", "", -1)
-	    tmp  = strings.Replace(tmp, ".", "", -1)
-	    tmp  = strings.Replace(tmp, ",", "", -1)
-	    tmp  = strings.Replace(tmp, ":", "", -1)
-	    tmp  = strings.Replace(tmp, ";", "", -1)
-	    tmp  = strings.Replace(tmp, "!", "", -1)
-	    tmp  = strings.Replace(tmp, "?", "", -1)
-	    tmp  = strings.Replace(tmp, "\n", "", -1)
-	    s   += tmp
+	    tmp  = strings.ToLower(tmp)
+	    for _,r := range tmp {
+	        //rc := strconv.QuoteRuneToASCII(r)
+	        if r >= 'a' && r <= 'z' {
+	            s   += strconv.QuoteRuneToASCII(r)
+	        }
+	    }
 	}
 	
 	if s == reverse(s) {
